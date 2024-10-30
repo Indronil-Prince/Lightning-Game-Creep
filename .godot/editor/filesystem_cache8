@@ -1,14 +1,14 @@
 fc8a56933c4b1c8d796fdb8f7a9f9475
-::res://::1729370702
+::res://::1730320496
 export_presets.cfg::TextFile::-1::1726977815::0::1::::<><>::
 game.apple-touch-icon.png::CompressedTexture2D::43624740336720411::1726977815::1729370704::1::::<><>::
 game.icon.png::CompressedTexture2D::4492643935347728697::1726977815::1729370704::1::::<><>::
 game.png::CompressedTexture2D::7918336006116672370::1726977815::1729370704::1::::<><>::
 hud.gd::GDScript::-1::1726976628::0::1::::<>CanvasLayer<>::
-hud.tscn::PackedScene::4947129736321201862::1726976761::0::1::::<><>::res://hud.gd<>uid://cit6gwe5px1q8::::res://fonts/Xolonium-Regular.ttf
+hud.tscn::PackedScene::4947129736321201862::1729394126::0::1::::<><>::res://hud.gd<>uid://cit6gwe5px1q8::::res://fonts/Xolonium-Regular.ttf
 icon.webp::CompressedTexture2D::3626017087650301524::1726802861::1726802931::1::::<><>::
-main.gd::GDScript::-1::1726976761::0::1::::<>Node<>::
-main.tscn::PackedScene::6469066510429512572::1726977764::0::1::::<><>::res://main.gd<>uid://rkdnhqgf2hpj::::res://mob.tscn<>uid://4vwrqjegqwpj::::res://player.tscn<>uid://ccqoreueuxdb7::::res://hud.tscn<>uid://q2pf4fr8d0ks::::res://art/House In a Forest Loop.ogg<>uid://dw26fpygeag8o::::res://art/gameover.wav<>uid://cslhbl8bgs6ba::::res://art/HitSound.mp3
+main.gd::GDScript::-1::1729370889::0::1::::<>Node<>::
+main.tscn::PackedScene::6469066510429512572::1729394126::0::1::::<><>::res://main.gd<>uid://rkdnhqgf2hpj::::res://mob.tscn<>uid://4vwrqjegqwpj::::res://player.tscn<>uid://ccqoreueuxdb7::::res://hud.tscn<>uid://q2pf4fr8d0ks::::res://art/House In a Forest Loop.ogg<>uid://dw26fpygeag8o::::res://art/gameover.wav<>uid://cslhbl8bgs6ba::::res://art/HitSound.mp3
 mob.gd::GDScript::-1::1726802860::0::1::::<>RigidBody2D<>::
 mob.tscn::PackedScene::1214059878346897035::1726802861::0::1::::<><>::res://mob.gd<>uid://yqglrrsx7j1f::::res://art/enemyFlyingAlt_1.png<>uid://bpot8awhdn6ph::::res://art/enemyFlyingAlt_2.png<>uid://bu4221t7qpa7d::::res://art/enemyWalking_1.png<>uid://booij5t7h4efb::::res://art/enemyWalking_2.png<>uid://5lvm88ij4jqn::::res://art/enemySwimming_1.png<>uid://bng45cvsgufqc::::res://art/enemySwimming_2.png
 player.gd::GDScript::-1::1726976354::0::1::::<>Area2D<>::
