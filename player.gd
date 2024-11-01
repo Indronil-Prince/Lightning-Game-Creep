@@ -4,12 +4,19 @@ signal hit
 
 @export var hud:CanvasLayer = null
 @export var speed = 400 # How fast the player will move (pixels/sec).
+var bullet_scene = preload("res://bullet.tscn")
 var screen_size # Size of the game window.
 var life = 3
 
 func _ready():
 	screen_size = get_viewport_rect().size
 	hide()
+	collision_layer = 1
+	collision_mask = 2
+	
+func _input(event):
+	if Input.is_key_pressed(KEY_SPACE):
+		shoot()
 
 func _process(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
@@ -45,6 +52,12 @@ func start(pos):
 	life = 3
 	show()
 	$CollisionShape2D.disabled = false
+
+func shoot():
+	var bullet = bullet_scene.instantiate()
+	bullet.position = position
+	bullet.rotation = rotation
+	get_parent().add_child(bullet)
 
 func _on_body_entered(_body):
 	life -= 1

@@ -1,9 +1,13 @@
 extends Node
 
 @export var mob_scene: PackedScene
-var score
+# var Bullet: Area2D
+var score = 0
 var life
 var bonus = 0
+
+func _ready() -> void:
+	mob_scene = preload("res://mob.tscn")
 
 func game_over():
 	$HUD.update_life(0)
@@ -14,6 +18,23 @@ func game_over():
 	$Music.stop()
 	$DeathSound.play()
 
+func add_mob():
+	var mob = mob_scene.instance()
+	mob.connect("mob_hit", Callable(self, "_on_mob_hit"))
+	add_child(mob)
+
+# Adjusted signal handler that fetches the mob from the signal emitter's metadata
+func _on_mob_hit(health):
+	print("Health: ", health )
+	# Apply the scoring logic as needed
+	match health:
+		2:
+			score += 2
+		1:
+			score += 3
+		0:
+			score += 5
+	$HUD.update_score(score)
 
 func new_game():
 	get_tree().call_group(&"mobs", &"queue_free")
@@ -27,8 +48,6 @@ func new_game():
 	$HUD.update_bonus(bonus)
 	$HUD.show_message("Get Ready")
 	$Music.play()
-	
-
 
 func _on_MobTimer_timeout():
 	# Create a new instance of the Mob scene.
@@ -56,17 +75,17 @@ func _on_MobTimer_timeout():
 	add_child(mob)
 
 func _on_ScoreTimer_timeout():
-	score += 1
+	#score += 1
 	if score>0 and score%10==0:
 		bonus+=1
 		$HUD.update_bonus(bonus)
 	$HUD.update_score(score)
-	$HUD.update_life($Player.life + bonus)
+	$HUD.update_life($Player.life  + bonus)
 	$Player.life = $Player.life + bonus
 	bonus = 0
 	$HUD.update_bonus(bonus)
-	
 
 func _on_StartTimer_timeout():
 	$MobTimer.start()
 	$ScoreTimer.start()
+	
