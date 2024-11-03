@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Dodge the Creeps"
+config/name="Lightning-game-One-man-army-of-the-space"
 config/description="This is a simple game where your character must move
 and avoid the enemies for as long as possible.
 
@@ -26,10 +26,13 @@ config/icon="res://icon.webp"
 
 window/size/viewport_width=880
 window/size/viewport_height=720
-window/size/mode=2
 window/size/window_width_override=480
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+
+[dotnet]
+
+project/assembly_name="Dodge the Creeps"
 
 [input]
 

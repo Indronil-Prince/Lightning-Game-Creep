@@ -7,16 +7,18 @@ signal hit
 var bullet_scene = preload("res://bullet.tscn")
 var screen_size # Size of the game window.
 var life = 3
+var player_rotation = 0
 
 func _ready():
 	screen_size = get_viewport_rect().size
 	hide()
 	collision_layer = 1
 	collision_mask = 2
+
 	
 func _input(event):
 	if Input.is_key_pressed(KEY_SPACE):
-		shoot()
+		pass#shoot()
 
 func _process(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
@@ -41,14 +43,19 @@ func _process(delta):
 	if velocity.x != 0:
 		$AnimatedSprite2D.animation = "right"
 		$AnimatedSprite2D.flip_v = false
-		$AnimatedSprite2D.flip_h = velocity.x < 0
+		$AnimatedSprite2D.flip_h = velocity.x > 0
+		player_rotation = PI if velocity.x < 0 else 0
 	elif velocity.y != 0:
 		$AnimatedSprite2D.animation = "up"
-		rotation = PI if velocity.y > 0 else 0
+		player_rotation = PI/2 if velocity.y > 0 else -PI/2
+		$AnimatedSprite2D.flip_v = velocity.y >0
+	
+	if Input.is_key_pressed(KEY_SPACE):
+		shoot()
 
 func start(pos):
 	position = pos
-	rotation = 0
+	#rotation = 0
 	life = 3
 	show()
 	$CollisionShape2D.disabled = false
@@ -56,7 +63,7 @@ func start(pos):
 func shoot():
 	var bullet = bullet_scene.instantiate()
 	bullet.position = position
-	bullet.rotation = rotation
+	bullet.rotation = player_rotation # rotation
 	get_parent().add_child(bullet)
 
 func _on_body_entered(_body):
