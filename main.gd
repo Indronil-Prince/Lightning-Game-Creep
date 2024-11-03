@@ -1,9 +1,10 @@
 extends Node
+@export var bullet_scene: PackedScene
 
 @export var mob_scene: PackedScene
 # var Bullet: Area2D
 var score = 0
-var life
+var life = 3
 var bonus = 0
 
 func _ready() -> void:
@@ -26,6 +27,8 @@ func add_mob():
 # Adjusted signal handler that fetches the mob from the signal emitter's metadata
 func _on_mob_hit(health):
 	print("Health: ", health )
+	
+
 	# Apply the scoring logic as needed
 	match health:
 		2:
@@ -34,7 +37,12 @@ func _on_mob_hit(health):
 			score += 3
 		0:
 			score += 5
-	$HUD.update_score(score)
+	#$HUD.update_score(score)
+	
+	score += 1  # Increase the score by 1 for each hit
+	print("Score:", score)  # Check if score is incrementing
+	$HUD.update_score(score)  # Update the score on the HUD
+
 
 func new_game():
 	get_tree().call_group(&"mobs", &"queue_free")
@@ -48,6 +56,18 @@ func new_game():
 	$HUD.update_bonus(bonus)
 	$HUD.show_message("Get Ready")
 	$Music.play()
+
+func shoot():
+	if bullet_scene:  # Ensure the bullet scene is loaded
+		var bullet = bullet_scene.instantiate()
+		bullet.position = $Player.position
+		bullet.rotation = $Player.rotation
+		bullet.linear_velocity = Vector2(500, 0).rotated($Player.rotation)  # Adjust speed as necessary
+		add_child(bullet)
+
+func _input(event):
+	if event.is_action_pressed("shoot"):
+		shoot()
 
 func _on_MobTimer_timeout():
 	# Create a new instance of the Mob scene.
@@ -73,6 +93,9 @@ func _on_MobTimer_timeout():
 
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
+
+
+
 
 func _on_ScoreTimer_timeout():
 	#score += 1

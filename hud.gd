@@ -18,8 +18,12 @@ func show_game_over():
 	$StartButton.show()
 
 
-func update_score(score):
-	$ScoreLabel.text = "Score: " + str(score)
+#func update_score(score):
+	#$ScoreLabel.text = "Score: " + str(score)
+func update_score(new_score):
+	  
+	$ScoreLabel.text = "Score: " + str(new_score)	
+	print("Updating HUD Score:", new_score) # Verify that this function is being called
 
 func update_life(life):
 	$LifeLabel.text = "Life: " + str(life)

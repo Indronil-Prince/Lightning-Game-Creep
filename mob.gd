@@ -21,7 +21,7 @@ func _ready():
 	
 # Function to handle bullet hits
 func take_damage():
-	health -= 1
+	health -= 1	
 	emit_signal("mob_hit", health)
 	# Scale the mob based on remaining health
 	match health:
@@ -32,6 +32,7 @@ func take_damage():
 			sprite.scale = Vector2(0.25, 0.25)  # Scale down to 25%
 			#sprite.modulate.a = 0.25
 		0:
+			emit_signal("mob_hit", health)
 			queue_free()  # Remove the mob from the scene
 
 # Connect this to bullet's body_entered signal if using Area2D for the bullet
