@@ -73,6 +73,7 @@ func shoot():
 	bullet.position = position
 	bullet.rotation = player_rotation # rotation
 	get_parent().add_child(bullet)
+	$ShootSound.play()
 
 func _on_body_entered(_body):
 	life -= 1

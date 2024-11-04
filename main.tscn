@@ -1,16 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://cyfwty2q3rdse"]
+[gd_scene load_steps=10 format=3 uid="uid://cyfwty2q3rdse"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_0r6n5"]
 [ext_resource type="PackedScene" uid="uid://rkdnhqgf2hpj" path="res://mob.tscn" id="2_50pww"]
+[ext_resource type="Texture2D" uid="uid://d3pcefm6m5vf" path="res://art/BG1.png" id="3_aw8qu"]
 [ext_resource type="PackedScene" uid="uid://4vwrqjegqwpj" path="res://player.tscn" id="3_veqnc"]
 [ext_resource type="PackedScene" uid="uid://ccqoreueuxdb7" path="res://hud.tscn" id="4_0qnje"]
-[ext_resource type="AudioStream" uid="uid://q2pf4fr8d0ks" path="res://art/House In a Forest Loop.ogg" id="5_55d8h"]
+[ext_resource type="AudioStream" uid="uid://biyxfeugu523p" path="res://art/Audio/bgm.mp3" id="6_28dak"]
 [ext_resource type="AudioStream" uid="uid://dw26fpygeag8o" path="res://art/gameover.wav" id="6_hp1r0"]
 [ext_resource type="AudioStream" uid="uid://cslhbl8bgs6ba" path="res://art/HitSound.mp3" id="6_r86qf"]
 
 [sub_resource type="Curve2D" id="1"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 882, -1, 0, 0, 0, 0, 881, 722, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 878.271, 3.37651, 0, 0, 0, 0, 881, 722, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0)
 }
 point_count = 5
 
@@ -18,14 +19,12 @@ point_count = 5
 script = ExtResource("1_0r6n5")
 mob_scene = ExtResource("2_50pww")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 400.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0430392, 0.0430392, 0.0430392, 1)
+[node name="Background" type="TextureRect" parent="."]
+offset_left = -30.0
+offset_top = -245.0
+offset_right = 963.0
+offset_bottom = 841.0
+texture = ExtResource("3_aw8qu")
 
 [node name="Player" parent="." instance=ExtResource("3_veqnc")]
 position = Vector2(-28, 0)
@@ -43,15 +42,17 @@ one_shot = true
 position = Vector2(449, 472)
 
 [node name="MobPath" type="Path2D" parent="."]
+position = Vector2(0, -102.858)
+scale = Vector2(1.07256, 1.14246)
 curve = SubResource("1")
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
-rotation = -0.00113379
+rotation = 0.00384448
 
 [node name="HUD" parent="." instance=ExtResource("4_0qnje")]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_55d8h")
+stream = ExtResource("6_28dak")
 pitch_scale = 0.9
 
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
