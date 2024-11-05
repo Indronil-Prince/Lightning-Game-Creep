@@ -22,6 +22,7 @@ func _ready():
 # Function to handle bullet hits
 func take_damage():
 	health -= 1	
+	main._on_mob_hit(health)
 	emit_signal("mob_hit", health)
 	# Scale the mob based on remaining health
 	match health:
