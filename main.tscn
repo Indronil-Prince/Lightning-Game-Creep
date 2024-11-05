@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cyfwty2q3rdse"]
+[gd_scene load_steps=11 format=3 uid="uid://cyfwty2q3rdse"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_0r6n5"]
 [ext_resource type="PackedScene" uid="uid://rkdnhqgf2hpj" path="res://mob.tscn" id="2_50pww"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://biyxfeugu523p" path="res://art/Audio/bgm.mp3" id="6_28dak"]
 [ext_resource type="AudioStream" uid="uid://dw26fpygeag8o" path="res://art/gameover.wav" id="6_hp1r0"]
 [ext_resource type="AudioStream" uid="uid://cslhbl8bgs6ba" path="res://art/HitSound.mp3" id="6_r86qf"]
+[ext_resource type="PackedScene" uid="uid://ccmg21ux2f2p6" path="res://powerup.tscn" id="9_sxbnp"]
 
 [sub_resource type="Curve2D" id="1"]
 _data = {
@@ -18,6 +19,7 @@ point_count = 5
 [node name="Main" type="Node"]
 script = ExtResource("1_0r6n5")
 mob_scene = ExtResource("2_50pww")
+powerup_scene = ExtResource("9_sxbnp")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_left = -30.0
@@ -64,9 +66,16 @@ stream = ExtResource("6_hp1r0")
 [node name="Mob" parent="." instance=ExtResource("2_50pww")]
 position = Vector2(-47, -1)
 
+[node name="powerup" parent="." instance=ExtResource("9_sxbnp")]
+position = Vector2(536, 230)
+
+[node name="NewLifeTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="mob_hit" from="Mob" to="." method="_on_mob_hit"]
+[connection signal="timeout" from="NewLifeTimer" to="." method="_on_new_life_timer_timeout"]

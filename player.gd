@@ -76,6 +76,12 @@ func shoot():
 	$ShootSound.play()
 
 func _on_body_entered(_body):
+	if _body.name == 'powerup':
+		life += 1
+		_body.hide_n_disable_poewrup_life()
+		return
+		
+	print(_body.name)
 	life -= 1
 	if life > 0:
 		modulate = Color.RED

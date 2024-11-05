@@ -51,6 +51,8 @@ func new_game():
 	bonus = 0
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
+	$NewLifeTimer.start(5)#$powerup.start_new_life_timer()
+	
 	$HUD.update_score(score)
 	$HUD.update_life(life)
 	$HUD.update_bonus(bonus)
@@ -112,3 +114,12 @@ func _on_StartTimer_timeout():
 	$MobTimer.start()
 	$ScoreTimer.start()
 	
+
+
+func _on_new_life_timer_timeout() -> void:
+	print('main: _on_new_life_timer_timeout()')
+	$powerup.show_powerup_life()
+	var offset = 20
+	$powerup.position = Vector2(randi_range(offset, $powerup.screen_size.x-offset), \
+	randi_range(offset, $powerup.screen_size.y-offset))
+	$NewLifeTimer.start(5)
