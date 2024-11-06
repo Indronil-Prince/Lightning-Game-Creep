@@ -3,9 +3,7 @@
 This is a simple game where your character must move and shoot the enemies for as long as possible.
 You will get bonus life for better gameplay and challenge yourself to get better score in next round!
 
-This is a finished version of the game featured in the
-["Your first 2D game"](https://docs.godotengine.org/en/latest/getting_started/first_2d_game/index.html)
-tutorial in the documentation. For more details, consider following the tutorial in the documentation.
+This is a finished version of the game featured in ["Play Here"](https://indronil-prince.github.io/lightgame.html)
 
 Language: GDScript
 
