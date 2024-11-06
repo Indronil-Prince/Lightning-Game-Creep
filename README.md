@@ -17,4 +17,4 @@ In this game you will try to eliminate as many alien ships as possible without g
 
 ## Screenshots
 
-<img src="./game-gif.gif" alt="Dialogue Example" height="128"/>
+<img src="./game-gif.gif" alt="Dialogue Example" width="512"/>
