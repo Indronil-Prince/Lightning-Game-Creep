@@ -27,7 +27,7 @@ func _process(delta):
 		velocity.x = randi_range(-offset, offset)
 		velocity.y = randi_range(-offset, offset)
 		if velocity.length() > 0:
-			velocity = velocity.normalized() * 2000 # Adjust speed as needed
+			velocity = velocity.normalized() * 1000 # Adjust speed as needed
 		position += velocity * delta
 		position.x = clamp(position.x, 0 + offset, screen_size.x - offset)
 		position.y = clamp(position.y, 0 + offset, screen_size.y - offset)
