@@ -116,10 +116,28 @@ func _on_StartTimer_timeout():
 	
 
 
+#func _on_new_life_timer_timeout() -> void:
+	#print('main: _on_new_life_timer_timeout()')
+	#$powerup.show_powerup_life()
+	#var offset = 20
+	#$powerup.position = Vector2(randi_range(offset, $powerup.screen_size.x-offset), \
+	#randi_range(offset, $powerup.screen_size.y-offset))
+	#$NewLifeTimer.start(5)
+
+
 func _on_new_life_timer_timeout() -> void:
 	print('main: _on_new_life_timer_timeout()')
 	$powerup.show_powerup_life()
+
 	var offset = 20
-	$powerup.position = Vector2(randi_range(offset, $powerup.screen_size.x-offset), \
-	randi_range(offset, $powerup.screen_size.y-offset))
+	$powerup.position = Vector2(
+		randi_range(offset, $powerup.screen_size.x - offset),
+		randi_range(offset, $powerup.screen_size.y - offset)
+	)
+
+	# Set the duration for which the power-up should remain visible
+	$powerup.get_node("Timer").wait_time = 3  # Adjust as needed
+	$powerup.get_node("Timer").start()
+	
+	# Restart the new life timer for future spawns
 	$NewLifeTimer.start(5)

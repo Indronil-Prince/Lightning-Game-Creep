@@ -19,7 +19,6 @@ point_count = 5
 [node name="Main" type="Node"]
 script = ExtResource("1_0r6n5")
 mob_scene = ExtResource("2_50pww")
-powerup_scene = ExtResource("9_sxbnp")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_left = -30.0

@@ -12,15 +12,25 @@ func _ready():
 	#position = pos
 	hide_n_disable_poewrup_life()
 	
-func _llprocess(delta):
-	var velocity = Vector2.ZERO # The player's movement vector.
-	velocity.x += randi_range(-offset, offset)
-	velocity.y += randi_range(-offset, offset)
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * 1000
-	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
+#func _llprocess(delta):
+	#var velocity = Vector2.ZERO # The player's movement vector.
+	#velocity.x += randi_range(-offset, offset)
+	#velocity.y += randi_range(-offset, offset)
+	#if velocity.length() > 0:
+		#velocity = velocity.normalized() * 1000
+	#position += velocity * delta
+	#position = position.clamp(Vector2.ZERO, screen_size)
 
+func _process(delta):
+	if isActive:
+		var velocity = Vector2.ZERO
+		velocity.x = randi_range(-offset, offset)
+		velocity.y = randi_range(-offset, offset)
+		if velocity.length() > 0:
+			velocity = velocity.normalized() * 2000 # Adjust speed as needed
+		position += velocity * delta
+		position.x = clamp(position.x, 0 + offset, screen_size.x - offset)
+		position.y = clamp(position.y, 0 + offset, screen_size.y - offset)
 	
 func show_powerup_life():
 	#if isActive:
