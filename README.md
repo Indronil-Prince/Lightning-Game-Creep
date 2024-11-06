@@ -1,4 +1,4 @@
-# Dodge the Creeps
+# One-Man Point-Man Space Combat
 
 This is a simple game where your character must move and avoid the enemies for as long as possible.
 You will get bonus life for better gameplay and challenge yourself to get better score in next round!
