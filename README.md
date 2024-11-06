@@ -16,6 +16,10 @@ Note: There is a C# version available [here](https://github.com/godotengine/godo
 
 Check out this demo on the asset library: https://godotengine.org/asset-library/asset/2712
 
+## Pitch:
+The goal of our game is to emulate a survival type 2d arcade. However this game will have unique artwork and some features that match the art. 
+In this game you will try to eliminate as many alien ships as possible without getting hit.
+
 ## Screenshots
 
 ![GIF from the documentation](https://docs.godotengine.org/en/latest/_images/dodge_preview.gif)
