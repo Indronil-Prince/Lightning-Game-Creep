@@ -22,9 +22,12 @@ In this game you will try to eliminate as many alien ships as possible without g
 
 ## Screenshots
 
+![Uploading MovementMechanicsAnimation.gif…]()
+
 ![GIF from the documentation](https://docs.godotengine.org/en/latest/_images/dodge_preview.gif)
 
 ![Screenshot](screenshots/dodge.png)
+
 
 ## Copying
 
